@@ -13,7 +13,7 @@
 * Validate if a word is present in the trie
 * Count number of occurrences of a word
 * Fetch all unique words present in the trie
-* Serialize: Convert the string into a string representation
+* Serialize: Convert the trie into a string representation
 * Deserialize: Construct a trie from supported serialized string format
 
 > Note: This library does not support alphanumeric strings and use of the characters '<' and '>' in the string.
