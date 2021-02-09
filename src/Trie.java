@@ -182,7 +182,9 @@ public class Trie {
             StringBuilder child = serializer(childNode);
             sb.append(child);
         }
-        sb.append(node.getCompletedWords()).append('>');
+        if(node.getCompletedWords()>0)
+        sb.append(node.getCompletedWords());
+        sb.append('>');
         return sb;
     }
 
@@ -212,6 +214,7 @@ public class Trie {
                 store.push(currentNode);
             }
             else if (c == '>') {
+                if(!occurrence.isEmpty())
                 store.peek().numberOfWordsCompletingHere = Integer.parseInt(occurrence.toString());
                 store.pop();
                 occurrence.replace(0, occurrence.length(), "");
@@ -219,7 +222,10 @@ public class Trie {
             else {
                 int asciiValue = c;
                 if (asciiValue >= 48 && asciiValue <= 57) {
-                    occurrence.append(c);
+                    if(asciiValue == 48 && occurrence.isEmpty()) continue;
+                    else {
+                        occurrence.append(c);
+                    }
                 }
                 else {
                     currentNode = new TrieNode();
